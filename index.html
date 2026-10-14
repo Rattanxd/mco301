@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Watchlist App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎬 Media Watchlist</h1>
+      <p>Track movies & TV shows you want to watch or have finished.</p>
+    </header>
+
+    <form id="movieForm">
+      <div class="form-group">
+        <input type="text" id="titleInput" placeholder="Movie / Show Title" required />
+      </div>
+      <div class="form-group">
+        <input type="text" id="genreInput" placeholder="Genre (e.g. Sci-Fi)" required />
+      </div>
+      <div class="form-group">
+        <input type="number" id="yearInput" placeholder="Release Year" min="1900" max="2030" required />
+      </div>
+      <button type="submit" id="addBtn">+ Add to Watchlist</button>
+    </form>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="All">All</button>
+      <button class="filter-btn" data-filter="Plan to Watch">Plan to Watch</button>
+      <button class="filter-btn" data-filter="Watched">Watched</button>
+    </div>
+
+    <ul id="movieList" class="movie-list"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
