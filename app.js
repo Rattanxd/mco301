@@ -2,6 +2,7 @@ class WatchlistManager {
   constructor() {
     this.movies = [];
     this.currentFilter = 'All'; 
+    this.searchQuery = ''; 
   }
 
   addMovie(title, genre, year) {
@@ -39,10 +40,19 @@ class WatchlistManager {
   }
 
   getFilteredMovies() {
-    if (this.currentFilter === 'All') {
-      return this.movies;
+    let result = this.currentFilter === 'All' 
+      ? this.movies 
+      : this.movies.filter(m => m.status === this.currentFilter);
+
+    if (this.searchQuery.trim() !== '') {
+      const lowerQuery = this.searchQuery.toLowerCase();
+      result = result.filter(m => 
+        m.title.toLowerCase().includes(lowerQuery) || 
+        m.genre.toLowerCase().includes(lowerQuery)
+      );
     }
-    return this.movies.filter(m => m.status === this.currentFilter);
+
+    return result;
   }
 }
 
@@ -51,8 +61,14 @@ const movieForm = document.getElementById('movieForm');
 const movieList = document.getElementById('movieList');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const addBtn = document.getElementById('addBtn');
+const searchInput = document.getElementById('searchInput'); 
 
 let editingId = null;
+
+searchInput.addEventListener('input', (e) => {
+  manager.searchQuery = e.target.value;
+  render(); 
+});
 
 movieForm.addEventListener('submit', (e) => {
   e.preventDefault(); 

@@ -96,6 +96,26 @@ input:focus {
   border-color: #8257e5;
 }
 
+.search-container {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1a1a1e; 
+  border: 1px solid #323238;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #8257e5;
+}
+
 .movie-list {
   list-style: none;
   display: flex;
